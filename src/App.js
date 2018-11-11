@@ -13,7 +13,8 @@ class App extends Component {
   }
 
   async componentWillMount() {
-    const { data: { holidays } } = await fetch('http://localhost:8081/data', { method: 'GET' })
+    const requestRoot = `${process.env.REACT_APP_API_PATH_DOMAIN}`
+    const { data: { holidays } } = await fetch(`${requestRoot}/data`, { method: 'GET' })
       .then(response => response.json())
       .catch(error => console.error('apiFetch error', error))
 
