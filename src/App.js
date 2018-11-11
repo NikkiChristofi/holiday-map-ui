@@ -32,7 +32,7 @@ class App extends Component {
 
     return (
       <Map
-        style="mapbox://styles/runsync/cjod3ea902rje2spac5kk29ld"
+        style="mapbox://styles/runsync/cjod2bfs43qie2rmmmn6jkd95"
         containerStyle={{
           height: "100vh",
           width: "100vw"
@@ -43,7 +43,14 @@ class App extends Component {
             type="symbol"
             id="marker"
             layout={{ "icon-image": "marker-15" }}>
-            <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+            {
+              holidays && holidays.map((holiday, index) => (
+                <Feature
+                  key={holiday.name}
+                  coordinates={[holiday.lon, holiday.lat]}
+                />
+              ))
+            }
           </Layer>
       </Map>
     );
